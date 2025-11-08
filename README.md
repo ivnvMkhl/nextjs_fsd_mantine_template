@@ -1,38 +1,89 @@
 # Next.js + FSD + Mantine Template - A starter template for modern web applications
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + FSD + Mantine Template
+
+Modern Next.js template with Feature-Sliced Design architecture and Mantine UI components.
+
+## Tech Stack
+
+- **[Next.js 16](https://nextjs.org)** - React framework with App Router
+- **[Mantine 8](https://mantine.dev)** - React components library with dark/light theme support
+- **[FSD](https://feature-sliced.design)** - Feature-Sliced Design architecture
+- **[TypeScript](https://www.typescriptlang.org)** - Type safety
+- **[ESLint](https://eslint.org)** - Code linting with custom FSD rules
+
+## Features
+
+- ✅ Feature-Sliced Design architecture
+- ✅ Mantine UI components with default theme
+- ✅ Dark/Light theme toggle with SSR support
+- ✅ Responsive header with mobile menu
+- ✅ Custom ESLint rules for FSD layer imports
+- ✅ TypeScript path aliases for clean imports
+- ✅ No hydration issues
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/              # Next.js App Router (pages, layouts)
+├── widgets/          # Complex UI blocks (Header)
+├── features/         # User interactions (theme-toggle)
+├── shared/           # Reusable code (providers, layouts)
+└── eslint-rules/     # Custom ESLint rules for FSD
+```
+
+### FSD Layer Rules
+
+- **app**: can import any layer
+- **widgets**: can import features, shared
+- **features**: can import shared only
+- **shared**: can import node_modules only
+
+These rules are enforced by custom ESLint plugin.
+
+## Path Aliases
+
+```typescript
+@app/*       -> ./src/app/*
+@widgets/*   -> ./src/widgets/*
+@features/*  -> ./src/features/*
+@shared/*    -> ./src/shared/*
+```
+
+## Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run start    # Start production server
+npm run lint     # Run ESLint
+```
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Mantine Documentation](https://mantine.dev)
+- [Feature-Sliced Design](https://feature-sliced.design)
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
