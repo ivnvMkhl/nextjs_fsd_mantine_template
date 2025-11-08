@@ -1,0 +1,13 @@
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+[data-mantine-color-scheme="light"] .dark {
+  display: none;
+}
+
+[data-mantine-color-scheme="dark"] .light {
+  display: none;
+}
+
